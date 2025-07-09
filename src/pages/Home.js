@@ -25,7 +25,7 @@ export default function Home() {
         zIndex: 10
       }}>
         <img
-          src="/images/Profilbild.png"
+          src="/home/dustin/Schreibtisch/Codes/React/Portfolio/meine-portfolio-seite/public/images/Profilbild.png"
           alt="Profilbild Dustin Groß"
           style={{ width: '100%', borderRadius: 8, display: 'block', margin: '0 auto' }}
         />
