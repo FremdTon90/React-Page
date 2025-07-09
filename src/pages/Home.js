@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import profilbild from '../assets/Profilbild.png' // ← Import des Bilds aus src/assets
 
 export default function Home() {
   return (
@@ -25,7 +26,7 @@ export default function Home() {
         zIndex: 10
       }}>
         <img
-          src={process.env.PUBLIC_URL + '/images/Profilbild.png'} 
+          src={profilbild} 
           alt="Profilbild Dustin Groß"
           style={{ width: '100%', borderRadius: 8, display: 'block', margin: '0 auto' }}
         />
@@ -71,7 +72,6 @@ export default function Home() {
           Du suchst jemanden, der neugierig ist, strukturiert denkt und sich mit Begeisterung in neue Tools und Herausforderungen reinkniet? 
           Ich suche ein Praktikum vom <strong>3.11.2025 bis 30.6.2026</strong> – bevorzugt im Raum Hamburg.
           <p><Link to="/contact" style={{ color: '#ffd700', fontWeight: 'bold' }}>Melde dich!</Link></p>
-           
         </p>
       </div>
     </div>
