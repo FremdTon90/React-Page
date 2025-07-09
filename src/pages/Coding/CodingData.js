@@ -21,7 +21,7 @@ const projects = [
             die sich mit den Grundlagen der Informatik beschäftigen möchten.</p>
       </>
     ),
-    images: ["./images/Bitwiser_App.png"]
+    images: ["/images/Bitwiser_App.png"]
   },
   {
     id: 'studdybuddy',
@@ -41,7 +41,7 @@ const projects = [
             für alle, die ihre Lerninhalte <strong>strukturiert</strong> und <strong>nachhaltig</strong> festigen möchten.</p>
       </>
     ),
-    images: ["./images/StuddyBuddyMain.png", "./images/StuddyBuddyTest.png"]
+    images: ["/images/StuddyBuddyMain.png", "/images/StuddyBuddyTest.png"]
   },
   {
     id: 'imagesearchapp',
@@ -70,7 +70,7 @@ const projects = [
             um eine maximal <strong>praxisnahe</strong>, <strong>benutzerfreundliche</strong> und <strong>erweiterbare</strong> Lösung zu bieten.</p>
       </>
     ),
-    images: ["./images/image-search.mp4"]
+    images: ["/images/image-search.mp4"]
   }
 ]
 
