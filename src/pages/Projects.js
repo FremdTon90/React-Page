@@ -10,7 +10,7 @@ export default function Projects() {
     './images/distance.jpg',
     './images/rover_run.mp4',
     './images/lyn-x_logo.jpg'
-  ]
+  ] 
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const [fade, setFade] = useState(true)

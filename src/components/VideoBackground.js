@@ -20,7 +20,7 @@ export default function VideoBackground() {
   const videoRef = useRef(null)
 
   useEffect(() => {
-    if (videoRef.current) {
+    if (videoRef.current) { 
       videoRef.current.playbackRate = 0.75
     }
   }, [])
