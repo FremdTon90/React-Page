@@ -1,0 +1,37 @@
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 90%;
+  width: 16%;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 
+    background-color 0.3s ease, 
+    color 0.3s ease, 
+    box-shadow 0.3s ease;
+  z-index: 10;
+}
+
+.nav-arrow:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #ffd700;
+  box-shadow: 0 0 10px 3px rgba(255, 215, 0, 0.7);
+}
+
+.prev-arrow {
+  left: 2%;
+}
+
+.next-arrow {
+  right: 2%;
+}
