@@ -3,13 +3,13 @@ import './Projects.css'
 
 export default function Projects() {
   const media = [
-    'images/finish_rover.jpg',
-    'images/3dplan.jpg',
-    'images/blueprint.jpg',
-    'images/gui.png',
-    'images/distance.jpg',
-    'images/rover_run.mp4',
-    'images/lyn-x_logo.jpg'
+    './images/finish_rover.jpg',
+    './images/3dplan.jpg',
+    './images/blueprint.jpg',
+    './images/gui.png',
+    './images/distance.jpg',
+    './images/rover_run.mp4',
+    './images/lyn-x_logo.jpg'
   ]
 
   const [currentIndex, setCurrentIndex] = useState(0)
