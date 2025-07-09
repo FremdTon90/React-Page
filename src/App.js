@@ -1,5 +1,5 @@
 import React from 'react'
-import { HashRouter as Router, Routes, Route } from 'react-router-dom' // ← hier geändert
+import { HashRouter as Router, Routes, Route } from 'react-router-dom' // ← für GitHub Pages
 import VideoBackground from './components/VideoBackground'
 import Navbar from './components/Navbar'
 import ScrollToTop from './components/ScrollToTop'
@@ -27,6 +27,7 @@ function App() {
           <Route path="/music/*" element={<Music />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<Home />} />
         </Routes>
       </div>
     </Router>
