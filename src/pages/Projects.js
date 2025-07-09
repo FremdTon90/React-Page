@@ -25,6 +25,10 @@ export default function Projects() {
   const [fade, setFade] = useState(true)
   const videoRef = useRef(null)
 
+  // Hilfsfunktion, um zu prüfen ob das aktuelle Medium ein Video ist
+  const isVideo = media[currentIndex].toLowerCase().endsWith('.mp4')
+
+  // Wechsel auf das nächste Medium mit Fade-Effekt
   const nextMedia = () => {
     setFade(false)
     setTimeout(() => {
@@ -33,6 +37,7 @@ export default function Projects() {
     }, 500)
   }
 
+  // Wechsel auf das vorherige Medium mit Fade-Effekt
   const prevMedia = () => {
     setFade(false)
     setTimeout(() => {
@@ -41,8 +46,7 @@ export default function Projects() {
     }, 500)
   }
 
-  const isVideo = media[currentIndex].toLowerCase().endsWith('.mp4')
-
+  // Effekt für automatischen Wechsel und Videoplayback
   useEffect(() => {
     if (isVideo) {
       const videoElement = videoRef.current
@@ -51,12 +55,15 @@ export default function Projects() {
           nextMedia()
         }
         videoElement.addEventListener('ended', handleEnded)
-        videoElement.play()
+        videoElement.play().catch(() => {
+          // Autoplay könnte blockiert sein, safe fallback
+        })
         return () => {
           videoElement.removeEventListener('ended', handleEnded)
         }
       }
     } else {
+      // Automatischer Bildwechsel alle 5 Sekunden
       const timer = setTimeout(() => {
         nextMedia()
       }, 5000)
@@ -95,6 +102,9 @@ export default function Projects() {
               maxWidth: '100%',
               maxHeight: 'calc(100% - 10%)',
               borderRadius: '10px',
+              opacity: fade ? 1 : 0,
+              transition: 'opacity 0.5s ease-in-out',
+              position: 'absolute',
             }}
           />
         ) : (
@@ -119,6 +129,7 @@ export default function Projects() {
               onClick={prevMedia}
               className="nav-arrow prev-arrow"
               aria-label="Vorheriges Medium"
+              style={{ zIndex: 20 }}
             >
               ‹
             </button>
@@ -126,6 +137,7 @@ export default function Projects() {
               onClick={nextMedia}
               className="nav-arrow next-arrow"
               aria-label="Nächstes Medium"
+              style={{ zIndex: 20 }}
             >
               ›
             </button>
@@ -143,6 +155,7 @@ export default function Projects() {
           borderRadius: '10px',
           boxShadow: '0 8px 20px #000000',
           lineHeight: '1.6',
+          fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
         }}
       >
         <h2>Das Projekt Lyn-X</h2>
