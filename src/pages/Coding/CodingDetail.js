@@ -50,7 +50,7 @@ export default function CodingDetail() {
           marginTop: 10,
         }}
       >
-        {project.images.map((src, idx) =>
+        {project.media.map((src, idx) =>
           src.endsWith('.mp4') ? (
             <video
               key={idx}

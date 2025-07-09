@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import projects from './CodingData'
+import projects from './CodingData' // Pfad anpassen, falls nötig
 
 export default function CodingOverview() {
   return (
@@ -9,6 +9,9 @@ export default function CodingOverview() {
         <h1>Meine Coding Projekte</h1>
         {projects.map((project, index) => {
           const isImageLeft = index % 2 === 0
+
+          // Check ob media existiert und mindestens 1 Medium vorhanden
+          const previewMedia = project.media && project.media.length > 0 ? project.media[0] : null
 
           return (
             <Link
@@ -22,25 +25,43 @@ export default function CodingOverview() {
                 alignItems: 'center',
                 gap: 40,
                 marginBottom: 60,
-                flexWrap: 'wrap'
+                flexWrap: 'wrap',
               }}
             >
               <div style={{ flex: '1 1 400px' }}>
-                {project.images[0]?.endsWith('.mp4') ? (
-                  <video
-                    src={project.images[0]}
-                    muted
-                    autoPlay
-                    loop
-                    playsInline
-                    style={{ width: '100%', borderRadius: 12, boxShadow: '0 8px 20px #000' }}
-                  />
+                {previewMedia ? (
+                  previewMedia.endsWith('.mp4') || previewMedia.endsWith('.webm') ? (
+                    <video
+                      src={previewMedia}
+                      muted
+                      autoPlay
+                      loop
+                      playsInline
+                      style={{ width: '100%', borderRadius: 12, boxShadow: '0 8px 20px #000' }}
+                    />
+                  ) : (
+                    <img
+                      src={previewMedia}
+                      alt={project.title}
+                      style={{ width: '100%', borderRadius: 12, boxShadow: '0 8px 20px #000' }}
+                    />
+                  )
                 ) : (
-                  <img
-                    src={project.images[0]}
-                    alt={project.title}
-                    style={{ width: '100%', borderRadius: 12, boxShadow: '0 8px 20px #000' }}
-                  />
+                  <div
+                    style={{
+                      width: '100%',
+                      height: '200px',
+                      backgroundColor: '#333',
+                      borderRadius: 12,
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      color: '#888',
+                      fontStyle: 'italic',
+                    }}
+                  >
+                    Kein Vorschaubild
+                  </div>
                 )}
               </div>
 

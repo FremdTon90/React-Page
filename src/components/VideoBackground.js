@@ -1,6 +1,8 @@
-// src/components/VideoBackground.js
 import React, { useRef, useEffect } from 'react'
 import styled from 'styled-components'
+
+// Video importieren
+import backgroundVideo from '../assets/videos/12716-241674181_small.mp4'
 
 const VideoWrapper = styled.div`
   position: fixed;
@@ -20,7 +22,7 @@ export default function VideoBackground() {
   const videoRef = useRef(null)
 
   useEffect(() => {
-    if (videoRef.current) { 
+    if (videoRef.current) {
       videoRef.current.playbackRate = 0.75
     }
   }, [])
@@ -28,7 +30,7 @@ export default function VideoBackground() {
   return (
     <VideoWrapper>
       <Video ref={videoRef} autoPlay muted loop playsInline>
-        <source src="./videos/12716-241674181_small.mp4" type="video/mp4" />
+        <source src={backgroundVideo} type="video/mp4" />
         Dein Browser unterstützt das Video nicht.
       </Video>
     </VideoWrapper>
