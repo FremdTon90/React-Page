@@ -1,5 +1,6 @@
+// App.js
 import React from 'react'
-import { HashRouter as Router, Routes, Route } from 'react-router-dom' // ← für GitHub Pages
+import { Routes, Route } from 'react-router-dom' // ⬅️ Router hier raus!
 import VideoBackground from './components/VideoBackground'
 import Navbar from './components/Navbar'
 import ScrollToTop from './components/ScrollToTop'
@@ -15,7 +16,7 @@ import Music from './pages/Music'
 
 function App() {
   return (
-    <Router>
+    <>
       <ScrollToTop />
       <VideoBackground />
       <Navbar />
@@ -27,10 +28,10 @@ function App() {
           <Route path="/music/*" element={<Music />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<Home />} />
+          <Route path="*" element={<Home />} /> {/* Catch-All Route */}
         </Routes>
       </div>
-    </Router>
+    </>
   )
 }
 
