@@ -3,13 +3,13 @@ import './Projects.css'
 
 export default function Projects() {
   const media = [
-    '/home/dustin/Schreibtisch/Codes/React/Portfolio/meine-portfolio-seite/public/images/finish_rover.jpg',
-    '/home/dustin/Schreibtisch/Codes/React/Portfolio/meine-portfolio-seite/public/images/3dplan.jpg',
-    '/home/dustin/Schreibtisch/Codes/React/Portfolio/meine-portfolio-seite/public/images/blueprint.jpg',
-    '/home/dustin/Schreibtisch/Codes/React/Portfolio/meine-portfolio-seite/public/images/gui.png',
-    '/home/dustin/Schreibtisch/Codes/React/Portfolio/meine-portfolio-seite/public/images/distance.jpg',
-    '/home/dustin/Schreibtisch/Codes/React/Portfolio/meine-portfolio-seite/public/images/rover_run.mp4',
-    '/home/dustin/Schreibtisch/Codes/React/Portfolio/meine-portfolio-seite/public/images/lyn-x_logo.jpg'
+    'images/finish_rover.jpg',
+    'images/3dplan.jpg',
+    'images/blueprint.jpg',
+    'images/gui.png',
+    'images/distance.jpg',
+    'images/rover_run.mp4',
+    'images/lyn-x_logo.jpg'
   ]
 
   const [currentIndex, setCurrentIndex] = useState(0)

@@ -28,7 +28,7 @@ export default function VideoBackground() {
   return (
     <VideoWrapper>
       <Video ref={videoRef} autoPlay muted loop playsInline>
-        <source src="/home/dustin/Schreibtisch/Codes/React/Portfolio/meine-portfolio-seite/public/videos/12716-241674181_small.mp4" type="video/mp4" />
+        <source src="videos/12716-241674181_small.mp4" type="video/mp4" />
         Dein Browser unterstützt das Video nicht.
       </Video>
     </VideoWrapper>
