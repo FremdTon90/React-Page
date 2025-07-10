@@ -16,131 +16,190 @@ export default function Projects() {
     gui,
     distance,
     roverRun,
-    logo
+    logo,
   ]
 
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [fade, setFade] = useState(true)
+  const mediaCount = media.length
+
+  // Rotation Count steuert den Winkel und den aktuellen Index
+  const [rotationCount, setRotationCount] = useState(0)
+  const currentIndex = rotationCount % mediaCount
+
   const videoRef = useRef(null)
 
-  const isVideo = media[currentIndex].toLowerCase().endsWith('.mp4')
-
-  const nextMedia = () => {
-    setFade(false)
-    setTimeout(() => {
-      setCurrentIndex((prev) => (prev + 1) % media.length)
-      setFade(true)
-    }, 500)
-  }
-
-  const prevMedia = () => {
-    setFade(false)
-    setTimeout(() => {
-      setCurrentIndex((prev) => (prev - 1 + media.length) % media.length)
-      setFade(true)
-    }, 500)
-  }
+  // Berechnung des Drehwinkels
+  const rotationY = rotationCount * (360 / mediaCount)
 
   useEffect(() => {
+    let timer
+
+    const isVideo =
+      typeof media[currentIndex] === 'string' &&
+      media[currentIndex].toLowerCase().endsWith('.mp4')
+
     if (isVideo) {
-      const videoElement = videoRef.current
-      if (videoElement) {
-        const handleEnded = () => {
-          nextMedia()
+      const video = videoRef.current
+      if (video) {
+        const onEnded = () => {
+          setRotationCount((count) => count + 1)
         }
-        videoElement.addEventListener('ended', handleEnded)
-        videoElement.play().catch(() => {})
+        video.addEventListener('ended', onEnded)
+        video.play()
         return () => {
-          videoElement.removeEventListener('ended', handleEnded)
+          video.pause()
+          video.removeEventListener('ended', onEnded)
         }
       }
     } else {
-      const timer = setTimeout(() => {
-        nextMedia()
+      timer = setTimeout(() => {
+        setRotationCount((count) => count + 1)
       }, 5000)
-      return () => clearTimeout(timer)
     }
-  }, [currentIndex, isVideo])
+
+    return () => clearTimeout(timer)
+  }, [currentIndex, media])
+
+  const goToIndex = (index) => {
+    const base = Math.floor(rotationCount / mediaCount) * mediaCount
+    let newCount = base + index
+    if (newCount <= rotationCount) {
+      newCount += mediaCount
+    }
+    setRotationCount(newCount)
+  }
+
+  const getSlideStyle = (index) => {
+    const angle = (360 / mediaCount) * index
+    const isActive = index === currentIndex
+
+    const translateZ = 500
+    const width = isActive ? 440 : 330
+    const height = isActive ? 300 : 225
+
+    return {
+      transform: `rotateY(${angle}deg) translateZ(${translateZ}px)`,
+      opacity: isActive ? 1 : 0.6,
+      filter: isActive ? 'brightness(1)' : 'brightness(0.7)',
+      zIndex: isActive ? 10 : 1,
+      width: `${width}px`,
+      height: `${height}px`,
+      transition: 'all 0.5s ease',
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      marginTop: `-${height / 2}px`,
+      marginLeft: `-${width / 2}px`,
+      borderRadius: '10px',
+      boxShadow: isActive
+        ? '0 0 20px rgba(0, 204, 255, 1)'
+        : '0 0 15px rgba(0, 204, 255, 0.5)',
+      cursor: 'pointer',
+      objectFit: 'cover',
+      userSelect: 'none',
+      backgroundColor: '#111',
+    }
+  }
 
   return (
-    <div className="lynx-container" style={{ minHeight: '100vh', color: 'white', padding: '1rem 1rem 2rem 1rem' }}>
-      <h1>Project Lyn-X</h1>
+    <div
+      className="lynx-container"
+      style={{
+        minHeight: '100vh',
+        color: 'white',
+        padding: '1rem 1rem 2rem 1rem',
+        fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+      }}
+    >
+      <h1 style={{ textAlign: 'center', marginBottom: '1rem' }}>
+        Project Lyn-X
+      </h1>
+
+      <div
+        className="carousel-wrapper"
+        style={{
+          perspective: '1200px',
+          width: '100%',
+          maxWidth: '900px',
+          height: '350px',
+          margin: '0 auto 3rem auto',
+          position: 'relative',
+          userSelect: 'none',
+        }}
+      >
+        <div
+          className="carousel"
+          style={{
+            width: '100%',
+            height: '100%',
+            position: 'relative',
+            transformStyle: 'preserve-3d',
+            transition: 'transform 0.7s ease',
+            transform: `translateZ(-350px) rotateY(${-rotationY}deg)`,
+            marginTop: '40px',
+          }}
+        >
+          {media.map((item, i) => {
+            const isVideo =
+              typeof item === 'string' && item.toLowerCase().endsWith('.mp4')
+
+            return isVideo ? (
+              <video
+                key={i}
+                ref={i === currentIndex ? videoRef : null}
+                src={item}
+                style={getSlideStyle(i)}
+                autoPlay={i === currentIndex}
+                muted
+                loop={false}
+                playsInline
+                onClick={() => goToIndex(i)}
+              />
+            ) : (
+              <img
+                key={i}
+                src={item}
+                alt={`Media ${i + 1}`}
+                style={getSlideStyle(i)}
+                draggable={false}
+                onClick={() => goToIndex(i)}
+              />
+            )
+          })}
+        </div>
+      </div>
 
       <div
         style={{
-          width: '92vw',
-          maxWidth: '1200px',
-          height: '400px',
-          margin: '0 auto 2rem auto',
-          backgroundColor: 'rgba(17, 17, 17, 0.95)',
-          borderRadius: '10px',
-          boxShadow: '0 8px 20px #000000',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          position: 'relative',
-          overflow: 'hidden',
+          textAlign: 'center',
+          marginBottom: '3rem',
         }}
       >
-        {isVideo ? (
-          <video
-            ref={videoRef}
-            src={media[currentIndex]}
-            controls
-            autoPlay
-            muted
+        {media.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => goToIndex(idx)}
             style={{
-              maxWidth: '100%',
-              maxHeight: 'calc(100% - 10%)',
-              borderRadius: '10px',
-              opacity: fade ? 1 : 0,
-              transition: 'opacity 0.5s ease-in-out',
-              position: 'absolute',
+              width: '14px',
+              height: '14px',
+              borderRadius: '50%',
+              margin: '0 6px',
+              border: 'none',
+              cursor: 'pointer',
+              backgroundColor:
+                idx === currentIndex ? '#00ccff' : 'rgba(255,255,255,0.3)',
+              boxShadow: idx === currentIndex ? '0 0 8px #00ccff' : 'none',
+              transition: 'background-color 0.3s ease',
             }}
+            aria-label={`Gehe zu Medium ${idx + 1}`}
           />
-        ) : (
-          <img
-            src={media[currentIndex]}
-            alt={`Media ${currentIndex + 1}`}
-            style={{
-              maxWidth: '100%',
-              maxHeight: 'calc(100% - 10%)',
-              borderRadius: '10px',
-              opacity: fade ? 1 : 0,
-              transition: 'opacity 0.5s ease-in-out',
-              position: 'absolute',
-            }}
-            key={media[currentIndex]}
-          />
-        )}
-
-        {media.length > 1 && (
-          <>
-            <button
-              onClick={prevMedia}
-              className="nav-arrow prev-arrow"
-              aria-label="Vorheriges Medium"
-              style={{ zIndex: 20 }}
-            >
-              ‹
-            </button>
-            <button
-              onClick={nextMedia}
-              className="nav-arrow next-arrow"
-              aria-label="Nächstes Medium"
-              style={{ zIndex: 20 }}
-            >
-              ›
-            </button>
-          </>
-        )}
+        ))}
       </div>
 
       <div
         style={{
           width: '90vw',
           maxWidth: '1200px',
-          margin: '1rem auto 3rem auto',
+          margin: '0 auto 3rem auto',
           backgroundColor: 'rgba(17, 17, 17, 0.95)',
           padding: '1rem',
           borderRadius: '10px',

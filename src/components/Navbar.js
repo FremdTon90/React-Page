@@ -17,18 +17,10 @@ const fadeSlideUp = keyframes`
 
 const neonPulse = keyframes`
   0%, 100% {
-    text-shadow:
-      0 0 5px #4ea1d3,
-      0 0 10px #4ea1d3,
-      0 0 20px #4ea1d3,
-      0 0 40px #4ea1d3;
+    text-shadow: 0 0 5px #4ea1d3, 0 0 10px #4ea1d3, 0 0 20px #4ea1d3, 0 0 40px #4ea1d3;
   }
   50% {
-    text-shadow:
-      0 0 10px #6dd5fa,
-      0 0 20px #6dd5fa,
-      0 0 30px #6dd5fa,
-      0 0 50px #6dd5fa;
+    text-shadow: 0 0 10px #6dd5fa, 0 0 20px #6dd5fa, 0 0 30px #6dd5fa, 0 0 50px #6dd5fa;
   }
 `;
 
@@ -73,12 +65,8 @@ const Burger = styled.div`
     height: 3px;
     background: white;
     border-radius: 2px;
-    /* kein Leuchten standardmäßig */
     box-shadow: none;
-    transition: 
-      transform 0.75s ease,
-      box-shadow 0.5s ease,
-      background-color 0.5s ease;
+    transition: transform 0.75s ease, box-shadow 0.5s ease, background-color 0.5s ease;
     transform-origin: center;
     will-change: transform;
     backface-visibility: hidden;
@@ -89,7 +77,7 @@ const Burger = styled.div`
     css`
       span {
         box-shadow: 0 0 8px #39ff14, 0 0 15px #39ff14, 0 0 20px #bfff00;
-        background: #39ff14; /* grün, wenn offen */
+        background: #39ff14;
       }
 
       span:nth-child(1) {
@@ -103,7 +91,6 @@ const Burger = styled.div`
       }
     `}
 `;
-
 
 const Overlay = styled.div`
   position: fixed;
@@ -129,7 +116,7 @@ const Menu = styled.div`
   box-shadow: 4px 0 15px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  overflow-y: auto;
   padding: 2rem 1.5rem;
   z-index: 1100;
 
@@ -152,10 +139,7 @@ const HoverBox = styled.div`
     text-decoration: none;
     font-weight: bold;
     display: inline-block;
-    transition: 
-      color 0.4s ease, 
-      box-shadow 0.3s ease, 
-      border-radius 0.3s ease;
+    transition: color 0.4s ease, box-shadow 0.3s ease, border-radius 0.3s ease;
     will-change: transform;
     transform-origin: center;
     position: relative;
@@ -184,9 +168,7 @@ const HoverBox = styled.div`
   &:hover a {
     animation: ${neonPulse} 1.5s infinite alternate;
     color: #6dd5fa;
-    box-shadow:
-      0 0 8px 3px rgba(78, 161, 211, 0.8),
-      0 0 20px 10px rgba(78, 161, 211, 0.4);
+    box-shadow: 0 0 8px 3px rgba(78, 161, 211, 0.8), 0 0 20px 10px rgba(78, 161, 211, 0.4);
     border-radius: 6px;
   }
 
@@ -194,6 +176,11 @@ const HoverBox = styled.div`
     width: 100%;
     opacity: 1;
   }
+`;
+
+const BottomSpacer = styled.div`
+  height: 80px;
+  flex-shrink: 0;
 `;
 
 const ScrollTopButton = styled.button`
@@ -261,10 +248,8 @@ export default function Navbar() {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-
     const rotateX = ((y - centerY) / centerY) * 20;
     const rotateY = ((x - centerX) / centerX) * 20;
 
@@ -328,6 +313,7 @@ export default function Navbar() {
             </Link>
           </HoverBox>
         ))}
+        <BottomSpacer />
       </Menu>
 
       {showButton && (
