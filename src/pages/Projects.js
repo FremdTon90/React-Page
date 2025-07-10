@@ -20,19 +20,56 @@ export default function Projects() {
   ]
 
   const mediaCount = media.length
-
-  // Rotation Count steuert den Winkel und den aktuellen Index
   const [rotationCount, setRotationCount] = useState(0)
   const currentIndex = rotationCount % mediaCount
-
   const videoRef = useRef(null)
 
-  // Berechnung des Drehwinkels
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  })
+
+  const isMobile = windowSize.width < 768
+  const isLandscape = windowSize.width > windowSize.height
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({ width: window.innerWidth, height: window.innerHeight })
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  const getSlideSize = (isActive) => {
+    if (isMobile && !isLandscape) {
+      const width = isActive ? 220 : 160
+      const height = isActive ? 150 : 110
+      return { width, height }
+    } else if (isMobile && isLandscape) {
+      const width = isActive ? 300 : 250
+      const height = isActive ? 210 : 170
+      return { width, height }
+    } else {
+      const width = isActive ? 380 : 280
+      const height = isActive ? 260 : 200
+      return { width, height }
+    }
+  }
+
+  const getTranslateZ = () => {
+    if (isMobile && !isLandscape) {
+      return 180
+    } else if (isMobile && isLandscape) {
+      return 220
+    } else {
+      return 300
+    }
+  }
+
   const rotationY = rotationCount * (360 / mediaCount)
 
   useEffect(() => {
     let timer
-
     const isVideo =
       typeof media[currentIndex] === 'string' &&
       media[currentIndex].toLowerCase().endsWith('.mp4')
@@ -40,9 +77,7 @@ export default function Projects() {
     if (isVideo) {
       const video = videoRef.current
       if (video) {
-        const onEnded = () => {
-          setRotationCount((count) => count + 1)
-        }
+        const onEnded = () => setRotationCount((c) => c + 1)
         video.addEventListener('ended', onEnded)
         video.play()
         return () => {
@@ -52,7 +87,7 @@ export default function Projects() {
       }
     } else {
       timer = setTimeout(() => {
-        setRotationCount((count) => count + 1)
+        setRotationCount((c) => c + 1)
       }, 5000)
     }
 
@@ -68,13 +103,38 @@ export default function Projects() {
     setRotationCount(newCount)
   }
 
+  // Swipe Handling
+  const touchStartX = useRef(null)
+  const touchEndX = useRef(null)
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.changedTouches[0].clientX
+  }
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.changedTouches[0].clientX
+  }
+
+  const handleTouchEnd = () => {
+    if (touchStartX.current !== null && touchEndX.current !== null) {
+      const deltaX = touchStartX.current - touchEndX.current
+      if (Math.abs(deltaX) > 50) {
+        if (deltaX > 0) {
+          setRotationCount((c) => c + 1)
+        } else {
+          setRotationCount((c) => (c > 0 ? c - 1 : c))
+        }
+      }
+    }
+    touchStartX.current = null
+    touchEndX.current = null
+  }
+
   const getSlideStyle = (index) => {
     const angle = (360 / mediaCount) * index
     const isActive = index === currentIndex
-
-    const translateZ = 500
-    const width = isActive ? 440 : 330
-    const height = isActive ? 300 : 225
+    const translateZ = getTranslateZ()
+    const { width, height } = getSlideSize(isActive)
 
     return {
       transform: `rotateY(${angle}deg) translateZ(${translateZ}px)`,
@@ -97,45 +157,24 @@ export default function Projects() {
       objectFit: 'cover',
       userSelect: 'none',
       backgroundColor: '#111',
+      pointerEvents: isActive ? 'auto' : 'none',
     }
   }
 
   return (
-    <div
-      className="lynx-container"
-      style={{
-        minHeight: '100vh',
-        color: 'white',
-        padding: '1rem 1rem 2rem 1rem',
-        fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-      }}
-    >
-      <h1 style={{ textAlign: 'center', marginBottom: '1rem' }}>
-        Project Lyn-X
-      </h1>
+    <div className="lynx-container">
+      <h1>Project Lyn-X</h1>
 
       <div
         className="carousel-wrapper"
-        style={{
-          perspective: '1200px',
-          width: '100%',
-          maxWidth: '900px',
-          height: '350px',
-          margin: '0 auto 3rem auto',
-          position: 'relative',
-          userSelect: 'none',
-        }}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
       >
         <div
           className="carousel"
           style={{
-            width: '100%',
-            height: '100%',
-            position: 'relative',
-            transformStyle: 'preserve-3d',
-            transition: 'transform 0.7s ease',
-            transform: `translateZ(-350px) rotateY(${-rotationY}deg)`,
-            marginTop: '40px',
+            transform: `translateZ(-${getTranslateZ() * 0.8}px) rotateY(${-rotationY}deg)`,
           }}
         >
           {media.map((item, i) => {
@@ -168,12 +207,7 @@ export default function Projects() {
         </div>
       </div>
 
-      <div
-        style={{
-          textAlign: 'center',
-          marginBottom: '3rem',
-        }}
-      >
+      <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
         {media.map((_, idx) => (
           <button
             key={idx}
@@ -195,66 +229,10 @@ export default function Projects() {
         ))}
       </div>
 
-      <div
-        style={{
-          width: '90vw',
-          maxWidth: '1200px',
-          margin: '0 auto 3rem auto',
-          backgroundColor: 'rgba(17, 17, 17, 0.95)',
-          padding: '1rem',
-          borderRadius: '10px',
-          boxShadow: '0 8px 20px #000000',
-          lineHeight: '1.6',
-          fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-        }}
-      >
+      <div className="project-text">
         <br />
         <p>
-          Im Rahmen eines innovativen Teams bestehend aus mir, einem weiteren Programmierer und vier <strong>Systemintegratoren</strong>,
-          haben wir einen hochentwickelten <strong>Rover</strong> entwickelt. Das Ziel dieses Projekts war es, ein Fahrzeug zu bauen,
-          das in gefährlichen Situationen den Menschen ersetzen kann – sei es zur Unterstützung bei Einsätzen in unzugänglichen Gebieten oder in Szenarien,
-          bei denen der Mensch durch die Gefahr unnötigen Risiken ausgesetzt wird.
-        </p>
-        <br />
-        <h4>1. Planung und Design</h4>
-        <p>
-          Die Vorplanung des Rovers wurde von mir mit <strong>Shapr3D</strong> auf dem iPad durchgeführt. Hierbei habe ich das 3D-Modell des Fahrzeugs erstellt und 
-          zusätzlich eine <strong>Blueprint-Dokumentation</strong> für die präzisen Maße und Bauteile des Rovers angefertigt. Die Fähigkeit, das Fahrzeug sowohl visuell als auch maßstabgetreu zu planen, 
-          war entscheidend für den erfolgreichen Bau und die funktionale Umsetzung. Als <strong>Karosserie- und Fahrzeugbauer</strong> konnte ich zudem wertvolle Kenntnisse 
-          in die Gestaltung des Gehäuses einfließen lassen, wodurch der Rover robust und funktional gestaltet wurde.
-        </p>
-        <br />
-        <h4>2. Funktionen und Technologien</h4>
-        <p>Der Rover wurde mit modernster Sensorik und Technologien ausgestattet, um in Gefahrensituationen optimal arbeiten zu können:</p>
-        <ul>
-          <li><strong>Nachtsichtkamera:</strong> Der Rover kann mit einer eingebauten Nachtsichtkamera operieren, die es ihm ermöglicht, 
-          auch bei Dunkelheit oder schlechten Sichtverhältnissen zu navigieren und Objekte zu erkennen.</li><br />
-          <li><strong>Ultraschallsensor:</strong> Ein Ultraschallsensor misst die Distanz zu Objekten, was dem Rover hilft, 
-          Hindernisse in seiner Umgebung zu erkennen und darauf zu reagieren. Diese Funktion ist besonders in komplexen oder engen Umgebungen nützlich.</li><br />
-          <li><strong>Umweltsensoren:</strong> Der Rover ist mit Sensoren ausgestattet, die es ihm ermöglichen, <strong>Temperatur</strong>, 
-          <strong> Luftfeuchtigkeit</strong> und <strong>Gase</strong> zu messen. Diese Daten werden live auf einer benutzerfreundlichen 
-          <strong>GUI (Grafische Benutzeroberfläche)</strong> angezeigt und bieten wertvolle Informationen für den Einsatz in kritischen Szenarien.</li><br />
-          <li><strong>Feuersensor:</strong> Ein Sensor zur Branddetektion ermöglicht es dem Rover, Feuer frühzeitig zu erkennen. Dies ist besonders wertvoll für Rettungs- 
-          und Brandbekämpfungsoperationen.</li><br />
-          <li><strong>Volle Steuerbarkeit und Beweglichkeit:</strong> Der Rover ist vollständig steuerbar, kann sich auf der Stelle drehen und bewegt sich flexibel in alle Richtungen. 
-          Besonders bemerkenswert ist der <strong>180° schwenkbare Kamera-Kopf</strong>, der dem Rover eine nahezu unbegrenzte Sicht ermöglicht.</li>
-        </ul>
-        <br />
-        <h4>3. Entwicklung und Programmierung</h4>
-        <p>
-          Die Programmierung des Systems war ein zentraler Bestandteil des Projekts. Als Hauptentwickler habe ich sowohl das 
-          <strong>Frontend</strong> als auch Teile des <strong>Backends</strong> entwickelt, wobei <strong>Python</strong> als Hauptsprache zum Einsatz kam. 
-          Das Frontend umfasst eine intuitive Benutzeroberfläche, auf der alle relevanten Informationen von den Sensoren in Echtzeit angezeigt werden.
-        </p>
-        <p>
-          Das Backend sorgt dafür, dass alle Sensoren korrekt miteinander kommunizieren, die Daten zuverlässig verarbeitet werden und die Steuerung des Rovers reibungslos funktioniert. 
-          Durch die Integration von Echtzeitdaten und der Steuerung des Fahrzeugs haben wir eine vollständig funktionsfähige Lösung für den Rover geschaffen.
-        </p>
-        <br />
-        <h4>4. Erfolge und Auszeichnung</h4>
-        <p>
-          Das Projekt wurde im Rahmen einer von Damago durchgeführten Wettbewerbsausstellung präsentiert, bei der unser Team als eines von nur drei Teams den <strong>ersten Platz</strong> gewann. 
-          Diese Auszeichnung unterstreicht den <strong>innovativen Charakter</strong> und die <strong>technische Exzellenz</strong> unseres Rovers, der in der Lage ist, eine Vielzahl von Gefahren und Herausforderungen zu bewältigen.
+          Im Rahmen eines innovativen Teams bestehend aus mir, einem weiteren Programmierer ...
         </p>
       </div>
     </div>

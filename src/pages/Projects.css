@@ -102,14 +102,27 @@ h1 {
   margin-bottom: 0.7rem;
 }
 
-@media (max-width: 640px) {
+/* Responsive Optimierungen */
+@media (max-width: 768px) {
   .carousel-wrapper {
     height: 250px;
   }
 
-  .carousel img,
-  .carousel video {
-    width: 140px !important;
-    height: 95px !important;
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  .project-text {
+    font-size: 0.95rem;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+  .carousel-wrapper {
+    height: 200px;
+  }
+
+  .project-text {
+    font-size: 0.9rem;
   }
 }
