@@ -1,7 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 import styled from 'styled-components'
 
-// Video importieren
 import backgroundVideo from '../assets/videos/12716-241674181_small.mp4'
 
 const VideoWrapper = styled.div`

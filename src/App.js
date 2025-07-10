@@ -1,6 +1,6 @@
 // App.js
 import React from 'react'
-import { Routes, Route } from 'react-router-dom' // ⬅️ Router hier raus!
+import { Routes, Route } from 'react-router-dom'
 import VideoBackground from './components/VideoBackground'
 import Navbar from './components/Navbar'
 import ScrollToTop from './components/ScrollToTop'
@@ -28,7 +28,7 @@ function App() {
           <Route path="/music/*" element={<Music />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<Home />} /> {/* Catch-All Route */}
+          <Route path="*" element={<Home />} />
         </Routes>
       </div>
     </>

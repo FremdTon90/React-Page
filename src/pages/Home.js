@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import profilbild from '../assets/Profilbild.png' // ← Import des Bilds aus src/assets
+import profilbild from '../assets/Profilbild.png'
 
 export default function Home() {
   return (
