@@ -46,7 +46,7 @@ export default function Projects() {
       const height = isActive ? 150 : 110
       return { width, height }
     } else if (isMobile && isLandscape) {
-      const width = isActive ? 300 : 200
+      const width = isActive ? 300 : 160
       const height = isActive ? 210 : 170
       return { width, height }
     } else {
