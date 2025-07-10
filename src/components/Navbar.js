@@ -32,6 +32,17 @@ const neonPulse = keyframes`
   }
 `;
 
+const menuReveal = keyframes`
+  0% {
+    opacity: 0;
+    transform: perspective(800px) rotateY(-30deg) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(800px) rotateY(0deg) scale(1);
+  }
+`;
+
 const Nav = styled.nav`
   position: fixed;
   top: 0;
@@ -64,22 +75,36 @@ const Burger = styled.div`
     border-radius: 2px;
     transition: all 0.3s ease;
     transform-origin: center;
+    box-shadow: none; /* Default kein Shadow */
   }
 
   ${props =>
     props.open &&
     css`
       span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
+        transform: rotate(30deg) translate(3px, 3px);
+        box-shadow:
+          0 0 8px #39ff14,
+          0 0 15px #39ff14,
+          0 0 20px #bfff00;
       }
       span:nth-child(2) {
-        opacity: 0;
+        transform: translateX(-11px) translateY(2px) rotate(90deg);
+        box-shadow:
+          0 0 8px #39ff14,
+          0 0 15px #39ff14,
+          0 0 20px #bfff00;
       }
       span:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -5px);
+        transform: rotate(-30deg) translate(1px, 0px);
+        box-shadow:
+          0 0 8px #39ff14,
+          0 0 15px #39ff14,
+          0 0 20px #bfff00;
       }
     `}
 `;
+
 
 const Overlay = styled.div`
   position: fixed;
@@ -107,11 +132,16 @@ const Menu = styled.div`
   flex-direction: column;
   justify-content: center;
   padding: 2rem 1.5rem;
-  transition: transform 0.3s ease;
   z-index: 1100;
 
   transform: ${props => (props.open ? 'translateX(0)' : 'translateX(-100%)')};
   pointer-events: ${props => (props.open ? 'auto' : 'none')};
+
+  ${props =>
+    props.open &&
+    css`
+      animation: ${menuReveal} 0.5s ease forwards;
+    `}
 `;
 
 const HoverBox = styled.div`
@@ -145,7 +175,7 @@ const HoverBox = styled.div`
       height: 3px;
       bottom: -6px;
       left: 0;
-      background: linear-gradient(90deg, #4ea1d3, #6dd5fa, #4ea1d3);
+      background: linear-gradient(90deg, #39ff14, #bfff00, #39ff14);
       transition: width 0.75s ease, opacity 0.75s ease;
       opacity: 0;
       border-radius: 3px;

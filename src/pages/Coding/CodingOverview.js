@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import projects from './CodingData' // Pfad anpassen, falls nötig
+import projects from './CodingData'
 
 export default function CodingOverview() {
   return (
@@ -10,7 +10,6 @@ export default function CodingOverview() {
         {projects.map((project, index) => {
           const isImageLeft = index % 2 === 0
 
-          // Check ob media existiert und mindestens 1 Medium vorhanden
           const previewMedia = project.media && project.media.length > 0 ? project.media[0] : null
 
           return (
