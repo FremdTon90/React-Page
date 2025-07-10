@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
 import './Projects.css'
-
-// Medien importieren
 import finishRover from '../assets/finish_rover.jpg'
 import plan3d from '../assets/3dplan.jpg'
 import blueprint from '../assets/blueprint.jpg'
@@ -25,10 +23,8 @@ export default function Projects() {
   const [fade, setFade] = useState(true)
   const videoRef = useRef(null)
 
-  // Hilfsfunktion, um zu prüfen ob das aktuelle Medium ein Video ist
   const isVideo = media[currentIndex].toLowerCase().endsWith('.mp4')
 
-  // Wechsel auf das nächste Medium mit Fade-Effekt
   const nextMedia = () => {
     setFade(false)
     setTimeout(() => {
@@ -37,7 +33,6 @@ export default function Projects() {
     }, 500)
   }
 
-  // Wechsel auf das vorherige Medium mit Fade-Effekt
   const prevMedia = () => {
     setFade(false)
     setTimeout(() => {
@@ -46,7 +41,6 @@ export default function Projects() {
     }, 500)
   }
 
-  // Effekt für automatischen Wechsel und Videoplayback
   useEffect(() => {
     if (isVideo) {
       const videoElement = videoRef.current
@@ -56,14 +50,12 @@ export default function Projects() {
         }
         videoElement.addEventListener('ended', handleEnded)
         videoElement.play().catch(() => {
-          // Autoplay könnte blockiert sein, safe fallback
         })
         return () => {
           videoElement.removeEventListener('ended', handleEnded)
         }
       }
     } else {
-      // Automatischer Bildwechsel alle 5 Sekunden
       const timer = setTimeout(() => {
         nextMedia()
       }, 5000)

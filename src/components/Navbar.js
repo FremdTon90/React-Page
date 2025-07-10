@@ -1,6 +1,36 @@
-import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import styled, { css } from 'styled-components'
+import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import styled, { css, keyframes } from 'styled-components';
+
+const fadeSlideUp = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+    visibility: hidden;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+  }
+`;
+
+const neonPulse = keyframes`
+  0%, 100% {
+    text-shadow:
+      0 0 5px #4ea1d3,
+      0 0 10px #4ea1d3,
+      0 0 20px #4ea1d3,
+      0 0 40px #4ea1d3;
+  }
+  50% {
+    text-shadow:
+      0 0 10px #6dd5fa,
+      0 0 20px #6dd5fa,
+      0 0 30px #6dd5fa,
+      0 0 50px #6dd5fa;
+  }
+`;
 
 const Nav = styled.nav`
   position: fixed;
@@ -16,7 +46,7 @@ const Nav = styled.nav`
   align-items: center;
   padding: 0 1.5rem;
   z-index: 1100;
-`
+`;
 
 const Burger = styled.div`
   width: 30px;
@@ -36,8 +66,8 @@ const Burger = styled.div`
     transform-origin: center;
   }
 
-  ${({ open }) =>
-    open &&
+  ${props =>
+    props.open &&
     css`
       span:nth-child(1) {
         transform: rotate(45deg) translate(5px, 5px);
@@ -49,7 +79,7 @@ const Burger = styled.div`
         transform: rotate(-45deg) translate(5px, -5px);
       }
     `}
-`
+`;
 
 const Overlay = styled.div`
   position: fixed;
@@ -58,11 +88,11 @@ const Overlay = styled.div`
   width: 100%;
   height: calc(100% - 60px);
   background: rgba(0, 0, 0, 0.5);
-  opacity: ${({ open }) => (open ? '1' : '0')};
-  pointer-events: ${({ open }) => (open ? 'auto' : 'none')};
+  opacity: ${props => (props.open ? '1' : '0')};
+  pointer-events: ${props => (props.open ? 'auto' : 'none')};
   transition: opacity 0.3s ease;
   z-index: 1050;
-`
+`;
 
 const Menu = styled.div`
   position: fixed;
@@ -75,86 +105,166 @@ const Menu = styled.div`
   box-shadow: 4px 0 15px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
+  justify-content: center;
   padding: 2rem 1.5rem;
   transition: transform 0.3s ease;
   z-index: 1100;
 
-  transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-100%)')};
-  pointer-events: ${({ open }) => (open ? 'auto' : 'none')};
+  transform: ${props => (props.open ? 'translateX(0)' : 'translateX(-100%)')};
+  pointer-events: ${props => (props.open ? 'auto' : 'none')};
+`;
+
+const HoverBox = styled.div`
+  margin-bottom: 1.5rem;
+  perspective: 600px;
 
   a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    margin-bottom: 1.5rem;
+    display: inline-block;
+    transition: 
+      color 0.4s ease, 
+      box-shadow 0.3s ease, 
+      border-radius 0.3s ease;
+    will-change: transform;
+    transform-origin: center;
     position: relative;
-    transition: color 0.3s ease, transform 0.2s ease;
+    width: 240px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 5px;
+    border-radius: 6px;
 
     &::after {
       content: '';
       position: absolute;
       width: 0;
-      height: 2px;
-      bottom: -4px;
+      height: 3px;
+      bottom: -6px;
       left: 0;
-      background-color: #4ea1d3;
-      transition: width 0.3s ease;
-    }
-
-    &:hover {
-      color: #4ea1d3;
-      transform: scale(1.05);
-    }
-
-    &:hover::after {
-      width: 100%;
+      background: linear-gradient(90deg, #4ea1d3, #6dd5fa, #4ea1d3);
+      transition: width 0.75s ease, opacity 0.75s ease;
+      opacity: 0;
+      border-radius: 3px;
     }
   }
-`
+
+  &:hover a {
+    animation: ${neonPulse} 1.5s infinite alternate;
+    color: #6dd5fa;
+    box-shadow:
+      0 0 8px 3px rgba(78, 161, 211, 0.8),
+      0 0 20px 10px rgba(78, 161, 211, 0.4);
+    border-radius: 6px;
+  }
+
+  &:hover a::after {
+    width: 100%;
+    opacity: 1;
+  }
+`;
 
 const ScrollTopButton = styled.button`
   position: fixed;
   bottom: 30px;
   right: 30px;
-  background-color: #4ea1d3;
+  background-color: #222222;
   border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  border-radius: 6px;
+  padding: 12px 16px;
   cursor: pointer;
-  color: white;
-  font-size: 24px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  transition: background-color 0.3s ease;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  box-shadow: 0 8px 20px #000000;
   z-index: 1200;
 
-  &:hover {
-    background-color: #3a85c7;
+  opacity: 0;
+  visibility: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+
+  pointer-events: auto;
+
+  &.visible {
+    animation: ${fadeSlideUp} 0.4s forwards;
+    opacity: 1;
+    visibility: visible;
   }
-`
+
+  &:hover {
+    background-color: #444444;
+    color: white;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7);
+    transform: translateY(-2px);
+    transition: all 0.25s ease;
+  }
+
+  &:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  }
+`;
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false)
-  const [showButton, setShowButton] = useState(false)
+  const [open, setOpen] = useState(false);
+  const [showButton, setShowButton] = useState(false);
+  const linkRefs = useRef([]);
 
-  const closeMenu = () => setOpen(false)
+  const closeMenu = () => setOpen(false);
 
-  // Scroll Event, um den Button nur ab 100px zu zeigen
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 100) {
-        setShowButton(true)
-      } else {
-        setShowButton(false)
-      }
+      setShowButton(window.scrollY > 100);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleMouseMove = (e, index) => {
+    const link = linkRefs.current[index];
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateX = ((y - centerY) / centerY) * 20;
+    const rotateY = ((x - centerX) / centerX) * 20;
+
+    if (link) {
+      link.style.transform = `scale(1.1) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(3px)`;
+      link.style.transition = 'transform 0.1s ease';
     }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  };
+
+  const resetTransform = index => {
+    const link = linkRefs.current[index];
+    if (link) {
+      link.style.transform = '';
+      link.style.transition = 'transform 0.3s ease';
+    }
+  };
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const menuItems = [
+    { label: 'Home', to: '/' },
+    { label: 'Coding', to: '/coding' },
+    { label: 'Project Lyn-X', to: '/projects' },
+    { label: 'Music', to: '/music' },
+    { label: 'About me', to: '/about' },
+    { label: 'Contact', to: '/contact' }
+  ];
 
   return (
     <>
@@ -174,31 +284,28 @@ export default function Navbar() {
       <Overlay open={open} onClick={closeMenu} />
 
       <Menu open={open}>
-        <Link to="/" onClick={closeMenu}>
-          Home
-        </Link>
-        <Link to="/coding" onClick={closeMenu}>
-          Coding
-        </Link>
-        <Link to="/projects" onClick={closeMenu}>
-          Project Lyn-X
-        </Link>
-        <Link to="/music" onClick={closeMenu}>
-          Music
-        </Link>
-        <Link to="/about" onClick={closeMenu}>
-          About me
-        </Link>
-        <Link to="/contact" onClick={closeMenu}>
-          Contact
-        </Link>
+        {menuItems.map((item, index) => (
+          <HoverBox
+            key={item.to}
+            onMouseMove={e => handleMouseMove(e, index)}
+            onMouseLeave={() => resetTransform(index)}
+          >
+            <Link
+              to={item.to}
+              onClick={closeMenu}
+              ref={el => (linkRefs.current[index] = el)}
+            >
+              {item.label}
+            </Link>
+          </HoverBox>
+        ))}
       </Menu>
 
       {showButton && (
-        <ScrollTopButton onClick={scrollToTop} aria-label="Scroll to top">
+        <ScrollTopButton onClick={scrollToTop} className="visible" aria-label="Scroll to top">
           ↑
         </ScrollTopButton>
       )}
     </>
-  )
+  );
 }
