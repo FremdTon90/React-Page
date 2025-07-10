@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/React-Page/static/css/main.1c8696ed.css",
-    "main.js": "/React-Page/static/js/main.ce7e7f77.js",
+    "main.css": "/React-Page/static/css/main.0e94fea2.css",
+    "main.js": "/React-Page/static/js/main.edb49eda.js",
     "static/js/453.a1ad08db.chunk.js": "/React-Page/static/js/453.a1ad08db.chunk.js",
     "static/media/12716-241674181_small.mp4": "/React-Page/static/media/12716-241674181_small.f780c2a021c880fd0968.mp4",
     "static/media/rover_run.mp4": "/React-Page/static/media/rover_run.4d051b1e27abcc05fe0f.mp4",
@@ -17,12 +17,12 @@
     "static/media/StuddyBuddyTest.png": "/React-Page/static/media/StuddyBuddyTest.402b48d0c5796d27999a.png",
     "static/media/StuddyBuddyMain.png": "/React-Page/static/media/StuddyBuddyMain.1ffd40207af684c6b93b.png",
     "index.html": "/React-Page/index.html",
-    "main.1c8696ed.css.map": "/React-Page/static/css/main.1c8696ed.css.map",
-    "main.ce7e7f77.js.map": "/React-Page/static/js/main.ce7e7f77.js.map",
+    "main.0e94fea2.css.map": "/React-Page/static/css/main.0e94fea2.css.map",
+    "main.edb49eda.js.map": "/React-Page/static/js/main.edb49eda.js.map",
     "453.a1ad08db.chunk.js.map": "/React-Page/static/js/453.a1ad08db.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1c8696ed.css",
-    "static/js/main.ce7e7f77.js"
+    "static/css/main.0e94fea2.css",
+    "static/js/main.edb49eda.js"
   ]
 }
