@@ -42,15 +42,15 @@ export default function Projects() {
 
   const getSlideSize = (isActive) => {
     if (isMobile && !isLandscape) {
-      const width = isActive ? 220 : 160
+      const width = isActive ? 220 : 120
       const height = isActive ? 150 : 110
       return { width, height }
     } else if (isMobile && isLandscape) {
-      const width = isActive ? 300 : 250
+      const width = isActive ? 300 : 200
       const height = isActive ? 210 : 170
       return { width, height }
     } else {
-      const width = isActive ? 380 : 280
+      const width = isActive ? 380 : 200
       const height = isActive ? 260 : 200
       return { width, height }
     }
@@ -103,7 +103,6 @@ export default function Projects() {
     setRotationCount(newCount)
   }
 
-  // Swipe Handling
   const touchStartX = useRef(null)
   const touchEndX = useRef(null)
 
@@ -232,7 +231,51 @@ export default function Projects() {
       <div className="project-text">
         <br />
         <p>
-          Im Rahmen eines innovativen Teams bestehend aus mir, einem weiteren Programmierer ...
+          Im Rahmen eines innovativen Teams bestehend aus mir, einem weiteren Programmierer und vier <strong>Systemintegratoren</strong>,
+          haben wir einen hochentwickelten <strong>Rover</strong> entwickelt. Das Ziel dieses Projekts war es, ein Fahrzeug zu bauen,
+          das in gefährlichen Situationen den Menschen ersetzen kann – sei es zur Unterstützung bei Einsätzen in unzugänglichen Gebieten oder in Szenarien,
+          bei denen der Mensch durch die Gefahr unnötigen Risiken ausgesetzt wird.
+        </p>
+        <br />
+        <h4>1. Planung und Design</h4>
+        <p>
+          Die Vorplanung des Rovers wurde von mir mit <strong>Shapr3D</strong> auf dem iPad durchgeführt. Hierbei habe ich das 3D-Modell des Fahrzeugs erstellt und
+          zusätzlich eine <strong>Blueprint-Dokumentation</strong> für die präzisen Maße und Bauteile des Rovers angefertigt. Die Fähigkeit, das Fahrzeug sowohl visuell als auch maßstabgetreu zu planen,
+          war entscheidend für den erfolgreichen Bau und die funktionale Umsetzung. Als <strong>Karosserie- und Fahrzeugbauer</strong> konnte ich zudem wertvolle Kenntnisse
+          in die Gestaltung des Gehäuses einfließen lassen, wodurch der Rover robust und funktional gestaltet wurde.
+        </p>
+        <br />
+        <h4>2. Funktionen und Technologien</h4>
+        <p>Der Rover wurde mit modernster Sensorik und Technologien ausgestattet, um in Gefahrensituationen optimal arbeiten zu können:</p>
+        <ul>
+          <li><strong>Nachtsichtkamera:</strong> Der Rover kann mit einer eingebauten Nachtsichtkamera operieren, die es ihm ermöglicht,
+            auch bei Dunkelheit oder schlechten Sichtverhältnissen zu navigieren und Objekte zu erkennen.</li><br />
+          <li><strong>Ultraschallsensor:</strong> Ein Ultraschallsensor misst die Distanz zu Objekten, was dem Rover hilft,
+            Hindernisse in seiner Umgebung zu erkennen und darauf zu reagieren. Diese Funktion ist besonders in komplexen oder engen Umgebungen nützlich.</li><br />
+          <li><strong>Umweltsensoren:</strong> Der Rover ist mit Sensoren ausgestattet, die es ihm ermöglichen, <strong>Temperatur</strong>,
+            <strong> Luftfeuchtigkeit</strong> und <strong>Gase</strong> zu messen. Diese Daten werden live auf einer benutzerfreundlichen
+            <strong>GUI (Grafische Benutzeroberfläche)</strong> angezeigt und bieten wertvolle Informationen für den Einsatz in kritischen Szenarien.</li><br />
+          <li><strong>Feuersensor:</strong> Ein Sensor zur Branddetektion ermöglicht es dem Rover, Feuer frühzeitig zu erkennen. Dies ist besonders wertvoll für Rettungs-
+            und Brandbekämpfungsoperationen.</li><br />
+          <li><strong>Volle Steuerbarkeit und Beweglichkeit:</strong> Der Rover ist vollständig steuerbar, kann sich auf der Stelle drehen und bewegt sich flexibel in alle Richtungen.
+            Besonders bemerkenswert ist der <strong>180° schwenkbare Kamera-Kopf</strong>, der dem Rover eine nahezu unbegrenzte Sicht ermöglicht.</li>
+        </ul>
+        <br />
+        <h4>3. Entwicklung und Programmierung</h4>
+        <p>
+          Die Programmierung des Systems war ein zentraler Bestandteil des Projekts. Als Hauptentwickler habe ich sowohl das
+          <strong>Frontend</strong> als auch Teile des <strong>Backends</strong> entwickelt, wobei <strong>Python</strong> als Hauptsprache zum Einsatz kam.
+          Das Frontend umfasst eine intuitive Benutzeroberfläche, auf der alle relevanten Informationen von den Sensoren in Echtzeit angezeigt werden.
+        </p>
+        <p>
+          Das Backend sorgt dafür, dass alle Sensoren korrekt miteinander kommunizieren, die Daten zuverlässig verarbeitet werden und die Steuerung des Rovers reibungslos funktioniert.
+          Durch die Integration von Echtzeitdaten und der Steuerung des Fahrzeugs haben wir eine vollständig funktionsfähige Lösung für den Rover geschaffen.
+        </p>
+        <br />
+        <h4>4. Erfolge und Auszeichnung</h4>
+        <p>
+          Das Projekt wurde im Rahmen einer von Damago durchgeführten Wettbewerbsausstellung präsentiert, bei der unser Team als eines von nur drei Teams den <strong>ersten Platz</strong> gewann.
+          Diese Auszeichnung unterstreicht den <strong>innovativen Charakter</strong> und die <strong>technische Exzellenz</strong> unseres Rovers, der in der Lage ist, eine Vielzahl von Gefahren und Herausforderungen zu bewältigen.
         </p>
       </div>
     </div>
