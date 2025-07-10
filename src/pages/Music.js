@@ -48,11 +48,11 @@ export default function Music() {
         </p>
 
         <p>
-          Zusätzlich bring ich Klang auch ins Bild: Ich erstelle <strong>Audiovisualisierungen</strong> mit <strong>Cinema 4D</strong> – perfekt synchronisierte Welten aus Ton und 3D-Animation. So wird Musik nicht nur hörbar, sondern auch sichtbar.
+          Zum Beispiel hab ich den <strong>Korg MS-20</strong> aufgebohrt – mehr Inputs, fancy Filter und richtig viel kreativen Freiraum. So entstehen Sounds, die kein Preset und kein anderer MS-20 liefern kann.
         </p>
 
         <p>
-          Zum Beispiel hab ich den <strong>Korg MS-20</strong> aufgebohrt – mehr Inputs, fancy Filter und richtig viel kreativen Freiraum. So entstehen Sounds, die kein Preset und kein anderer MS-20 liefern kann.
+          Zusätzlich bring ich Klang auch ins Bild: Ich erstelle <strong>Audiovisualisierungen</strong> mit <strong>Cinema 4D</strong> – perfekt synchronisierte Welten aus Ton und 3D-Animation. So wird Musik nicht nur hörbar, sondern auch sichtbar.
         </p>
 
         <p>
