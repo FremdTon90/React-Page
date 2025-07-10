@@ -73,34 +73,33 @@ const Burger = styled.div`
     height: 3px;
     background: white;
     border-radius: 2px;
-    transition: all 0.3s ease;
+    /* kein Leuchten standardmäßig */
+    box-shadow: none;
+    transition: 
+      transform 0.75s ease,
+      box-shadow 0.5s ease,
+      background-color 0.5s ease;
     transform-origin: center;
-    box-shadow: none; /* Default kein Shadow */
+    will-change: transform;
+    backface-visibility: hidden;
   }
 
   ${props =>
     props.open &&
     css`
+      span {
+        box-shadow: 0 0 8px #39ff14, 0 0 15px #39ff14, 0 0 20px #bfff00;
+        background: #39ff14; /* grün, wenn offen */
+      }
+
       span:nth-child(1) {
         transform: rotate(30deg) translate(3px, 3px);
-        box-shadow:
-          0 0 8px #39ff14,
-          0 0 15px #39ff14,
-          0 0 20px #bfff00;
       }
       span:nth-child(2) {
         transform: translateX(-11px) translateY(2px) rotate(90deg);
-        box-shadow:
-          0 0 8px #39ff14,
-          0 0 15px #39ff14,
-          0 0 20px #bfff00;
       }
       span:nth-child(3) {
-        transform: rotate(-30deg) translate(1px, 0px);
-        box-shadow:
-          0 0 8px #39ff14,
-          0 0 15px #39ff14,
-          0 0 20px #bfff00;
+        transform: rotate(-30deg) translate(1px, 0);
       }
     `}
 `;
