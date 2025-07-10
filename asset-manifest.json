@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/React-Page/static/css/main.48067e3d.css",
-    "main.js": "/React-Page/static/js/main.cd12aa7e.js",
+    "main.js": "/React-Page/static/js/main.ea22c243.js",
     "static/js/453.a1ad08db.chunk.js": "/React-Page/static/js/453.a1ad08db.chunk.js",
     "static/media/12716-241674181_small.mp4": "/React-Page/static/media/12716-241674181_small.f780c2a021c880fd0968.mp4",
     "static/media/rover_run.mp4": "/React-Page/static/media/rover_run.4d051b1e27abcc05fe0f.mp4",
@@ -18,11 +18,11 @@
     "static/media/StuddyBuddyMain.png": "/React-Page/static/media/StuddyBuddyMain.1ffd40207af684c6b93b.png",
     "index.html": "/React-Page/index.html",
     "main.48067e3d.css.map": "/React-Page/static/css/main.48067e3d.css.map",
-    "main.cd12aa7e.js.map": "/React-Page/static/js/main.cd12aa7e.js.map",
+    "main.ea22c243.js.map": "/React-Page/static/js/main.ea22c243.js.map",
     "453.a1ad08db.chunk.js.map": "/React-Page/static/js/453.a1ad08db.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.48067e3d.css",
-    "static/js/main.cd12aa7e.js"
+    "static/js/main.ea22c243.js"
   ]
 }
