@@ -67,7 +67,7 @@ export default function Contact() {
           fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
         }}
       >
-        <h1 style={{ marginBottom: 20, position: 'relative', zIndex: 10 }}>Kontakt</h1>
+        <h1 style={{ marginBottom: 20, position: 'relative', zIndex: 10 }}>Contact</h1>
 
         <div
           style={{

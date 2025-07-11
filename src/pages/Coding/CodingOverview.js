@@ -6,7 +6,7 @@ export default function CodingOverview() {
   return (
     <>
       <div style={{ minHeight: '100vh', color: 'white', padding: '1rem 1rem 2rem 1rem' }}>
-        <h1>Meine Coding Projekte</h1>
+        <h1>Coding</h1>
         {projects.map((project, index) => {
           const isImageLeft = index % 2 === 0
 
