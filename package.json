@@ -9,6 +9,8 @@
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^13.5.0",
     "lucide-react": "^0.525.0",
+    "p5": "^2.0.3",
+    "p5.sound": "^0.2.0",
     "prism-react-renderer": "^2.4.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
