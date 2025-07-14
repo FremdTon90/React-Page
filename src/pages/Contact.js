@@ -6,7 +6,6 @@ export default function Contact() {
   const [lastNameInput, setLastNameInput] = useState('');
   const [showDetails, setShowDetails] = useState(false);
 
-  // Base64-encodierte Daten
   const encodedSecret = 'Z3Jvw58=';
   const encodedPhone = 'KzQ5IDE1NzUgNDg4MjQxMA==';
   const encodedAddress = 'U3Rvcm1hcm5lciBTdHJhw59lIDM5LCAyMjA0OSBIYW1idXJnLCBEZXV0c2NobGFuZA==';
@@ -107,6 +106,7 @@ export default function Contact() {
                 backgroundColor: '#222',
                 color: 'white',
                 fontSize: '1rem',
+                boxSizing: 'border-box',
               }}
             />
           </div>
