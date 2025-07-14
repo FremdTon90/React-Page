@@ -8,7 +8,7 @@ export default function Contact() {
 
   const encodedSecret = 'Z3Jvw58=';
   const encodedPhone = 'KzQ5IDE1NzUgNDg4MjQxMA==';
-  const encodedAddress = 'U3Rvcm1hcm5lciBTdHJhw59lIDM5LCAyMjA0OSBIYW1idXJnLCBEZXV0c2NobGFuZA==';
+  const encodedAddress = 'SGFtYnVyZyAtIFdhbmRzYmVrL0R1bHNiZXJn';
   const encodedLinkedIn = 'aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL2R1c3Rpbi1ncm/Dny0yN2FhMWIzMzMv';
 
   const decode = (b64) => decodeURIComponent(escape(window.atob(b64)));
@@ -157,7 +157,7 @@ export default function Contact() {
                       height="100%"
                       frameBorder="0"
                       style={{ border: 0 }}
-                      src="https://maps.google.com/maps?q=Stormarner+Straße+39,+22049+Hamburg,+Deutschland&output=embed"
+                      src="https://maps.google.com/maps?q=Hamburg+Wandsbek+Dulsberg&output=embed"
                       allowFullScreen
                       loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"
