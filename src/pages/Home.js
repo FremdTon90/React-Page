@@ -27,7 +27,7 @@ export default function Home() {
       }}>
         <img
           src={profilbild} 
-          alt="Profilbild Dustin Groß"
+          alt="Profilbild Dustin"
           style={{ width: '100%', borderRadius: 8, display: 'block', margin: '0 auto' }}
         />
       </div>
@@ -47,7 +47,7 @@ export default function Home() {
         fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
       }}>
         <p>
-          Hey! Ich bin <strong>Dustin Groß</strong> – Tech-Tüftler, Klangbastler, Humorliebhaber mit einem klaren Faible für <strong>Learning by Doing</strong>. 
+          Hey! Ich bin <strong>Dustin</strong> – Tech-Tüftler, Klangbastler, Humorliebhaber mit einem klaren Faible für <strong>Learning by Doing</strong>. 
           Wenn mich etwas interessiert, bring ich’s mir bei – egal ob neue Programmiersprachen, Audio-Engines, Frameworks oder obskure Fehlermeldungen.
           Aktuell bin ich in der Umschulung zum <strong>Fachinformatiker für Anwendungsentwicklung</strong>.
         </p>

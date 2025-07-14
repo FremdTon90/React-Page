@@ -7,6 +7,9 @@ export default function Music() {
   const analyserRef = useRef(null)
   const [audioAnalyser, setAudioAnalyser] = useState(null)
 
+  // State für Tipp-Box
+  const [showTips, setShowTips] = useState(false)
+
   useEffect(() => {
     audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)()
     analyserRef.current = audioContextRef.current.createAnalyser()
@@ -31,6 +34,18 @@ export default function Music() {
         .then(() => console.log('AudioContext resumed'))
         .catch(err => console.error('AudioContext resume failed', err))
     }
+  }
+
+  const tipContainerStyle = {
+    maxHeight: showTips ? '150px' : '0',
+    overflow: 'hidden',
+    transition: 'max-height 0.4s ease',
+    color: '#cccccc',
+    fontSize: '0.9rem',
+    lineHeight: 1.4,
+    marginTop: showTips ? 15 : 0,
+    textAlign: 'center',
+    userSelect: 'none',
   }
 
   return (
@@ -62,7 +77,6 @@ export default function Music() {
         }}
       >
         <h3 style={{ marginBottom: 15, fontWeight: 'bold' }}>Über den Interpreten</h3>
-
         <p>
           Seit <strong>2001</strong> kredenze ich Musik – erst mit klassischen <strong>Hip-Hop-Beats</strong>, aber schnell ging’s ab in die elektronische Ecke:{' '}
           <strong>Techno</strong>. Dann tauchte ich tief rein in die hypnotischen Sounds vom <strong>Psytrance</strong>.
@@ -95,24 +109,69 @@ export default function Music() {
         <p style={{ fontStyle: 'italic', marginTop: 20, textAlign: 'center' }}>
           <strong>Kreativität ist kein Genre, sondern ein Zustand.</strong>
         </p>
+      </div>
 
-        <div style={{ marginTop: 30, textAlign: 'center' }}>
-          <h3>FremdTon - InComing Error:</h3>
-          <audio
-            ref={audioRef}
-            controls
-            preload="auto"
-            src={process.env.PUBLIC_URL + "/audio/fremdton-track.mp3"}
-            onPlay={handlePlay}
-            style={{ width: '100%', borderRadius: 8, marginTop: 10 }}
-          >
-            Your browser does not support the audio element.
-          </audio>
+      <div
+        style={{
+          maxWidth: 600,
+          backgroundColor: 'rgba(17, 17, 17, 0.95)',
+          padding: 20,
+          borderRadius: 10,
+          boxShadow: '0 8px 20px #000000',
+          margin: '20px auto 0 auto',
+          position: 'relative',
+          zIndex: 10,
+          textAlign: 'center',
+        }}
+      >
+        <h3 style={{ marginBottom: 25, fontWeight: 'bold', fontSize: '1.2rem' }}>
+          FremdTon – InComing Error:
+        </h3>
+
+        <div style={{ marginBottom: 30 }}>
+          <FractalVisualizer audioAnalyser={audioAnalyser} />
         </div>
 
-        <div style={{ marginTop: 40 }}>
-          <h3>Visualizer:</h3>
-          <FractalVisualizer audioAnalyser={audioAnalyser} />
+        <audio
+          ref={audioRef}
+          controls
+          preload="auto"
+          src={process.env.PUBLIC_URL + "/audio/fremdton-track.mp3"}
+          onPlay={handlePlay}
+          style={{ width: '100%', borderRadius: 8 }}
+        >
+          Your browser does not support the audio element.
+        </audio>
+
+        <button
+          onClick={() => setShowTips(!showTips)}
+          style={{
+            marginTop: 15,
+            padding: '6px 12px',
+            backgroundColor: '#222',
+            color: 'white',
+            border: 'none',
+            borderRadius: 6,
+            cursor: 'pointer',
+            fontSize: '0.9rem',
+            userSelect: 'none',
+            transition: 'background-color 0.3s',
+          }}
+          onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#444')}
+          onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#222')}
+          aria-expanded={showTips}
+          aria-controls="tip-text"
+        >
+          {showTips ? 'Tipps ausblenden ▲' : 'Tipps anzeigen ▼'}
+        </button>
+
+        <div id="tip-text" style={tipContainerStyle} aria-hidden={!showTips}>
+          <p style={{ marginTop: 10 }}>
+            <strong>Mausrad:</strong> zum Zoomen <br />
+            <strong>Linksklick:</strong> zum Drehen <br />
+            <strong>Rechtsklick:</strong> zum Verschieben <br />
+            <strong>Handy:</strong> Einfach mit einem oder zwei Fingern reinwurschteln 😄
+          </p>
         </div>
       </div>
     </div>
