@@ -119,3 +119,8 @@ export default function Music() {
     </div>
   )
 }
+
+
+
+
+// Dynamischer Farbwechsel (z. B. je nach Frequenzband)
