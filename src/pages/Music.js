@@ -41,7 +41,6 @@ export default function Music() {
         padding: '1rem 1rem 2rem 1rem',
         position: 'relative',
         overflow: 'hidden',
-        backgroundColor: '#111111',
         fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
       }}
     >
