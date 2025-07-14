@@ -6,10 +6,20 @@ export default function Contact() {
   const [lastNameInput, setLastNameInput] = useState('');
   const [showDetails, setShowDetails] = useState(false);
 
+  // Base64-encodierte Daten
+  const encodedSecret = 'Z3Jvw58=';
+  const encodedPhone = 'KzQ5IDE1NzUgNDg4MjQxMA==';
+  const encodedAddress = 'U3Rvcm1hcm5lciBTdHJhw59lIDM5LCAyMjA0OSBIYW1idXJnLCBEZXV0c2NobGFuZA==';
+  const encodedLinkedIn = 'aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL2R1c3Rpbi1ncm/Dny0yN2FhMWIzMzMv';
+
+  const decode = (b64) => decodeURIComponent(escape(window.atob(b64)));
+
   const handleLastNameCheck = (e) => {
     const input = e.target.value;
     setLastNameInput(input);
-    setShowDetails(input.trim().toLowerCase() === 'groß');
+    const normalizedInput = input.trim().normalize('NFC').toLocaleLowerCase('de-DE');
+    const normalizedSecret = decode(encodedSecret).normalize('NFC').toLocaleLowerCase('de-DE');
+    setShowDetails(normalizedInput === normalizedSecret);
   };
 
   return (
@@ -113,7 +123,7 @@ export default function Contact() {
               <>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
                   <Phone size={20} color="#4ade80" />
-                  <span>+49 1575 4882410</span>
+                  <span>{decode(encodedPhone)}</span>
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -134,7 +144,7 @@ export default function Contact() {
                     aria-expanded={showMap}
                     aria-controls="map-iframe"
                   >
-                    Stormarner Straße 39, 22049 Hamburg, Deutschland
+                    {decode(encodedAddress)}
                   </button>
                 </div>
 
@@ -196,7 +206,7 @@ export default function Contact() {
                   SoundCloud
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/dustin-gro%C3%9F-27aa1b333/"
+                  href={decode(encodedLinkedIn)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="social-link"
