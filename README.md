@@ -22,7 +22,6 @@ A stylish single-page portfolio website built with **React**, **React Router**, 
 
 ---
 
-#################################################################################################
 
 📁 Project Structure
 
@@ -39,7 +38,7 @@ React-Page/
 ├── package.json        # Dependencies & scripts
 └── README.md           # You’re here
 
-#################################################################################################
+---
 
 🛠️ Getting Started
 
@@ -59,7 +58,7 @@ npm start
 # 4. build the final site
 npm run build
 
-#################################################################################################
+---
 
 🤝 Contributing
 
