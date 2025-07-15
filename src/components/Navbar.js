@@ -87,7 +87,7 @@ const Burger = styled.div`
         transform: translateX(-11px) translateY(2px) rotate(90deg);
       }
       span:nth-child(3) {
-        transform: rotate(-30deg) translate(1.5px, 0);
+        transform: rotate(-29deg) translate(1.5px, 0);
       }
     `}
 `;
