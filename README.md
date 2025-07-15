@@ -28,17 +28,18 @@ A stylish single-page portfolio website built with **React**, **React Router**, 
 
 📁 Project Structure
 
+```
 React-Page/
-├── public/ # Static files (index.html, favicon, etc.)
+├── public/             # index.html + static assets
 ├── src/
-│ ├── components/ # Reusable UI components
-│ ├── pages/ # Route pages (Home, Projects, Contact, etc.)
-│ ├── assets/ # Images, icons, audio, etc.
-│ ├── styles/ # Custom CSS files
-│ ├── App.js # Main App component with Router
-│ └── index.js # Entry point
-├── package.json # Project config and dependencies
-└── README.md # You're here 
+│   ├── components/     # Reusable components
+│   ├── pages/          # Route pages (Home, Projects, etc.)
+│   ├── assets/         # Icons, images, audio, etc.
+│   ├── styles/         # Custom CSS files
+│   ├── App.js          # Router logic & layout
+│   └── index.js        # Entry point
+├── package.json        # Dependencies & scripts
+└── README.md           # You’re here ```
 
 #################################################################################################
 
