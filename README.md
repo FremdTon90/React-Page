@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+🎨 React‑Page
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+🔗 **Live Demo**: [https://fremdton90.github.io/React-Page/](https://fremdton90.github.io/React-Page/)
 
-## Available Scripts
+A stylish single-page portfolio website built with **React**, **React Router**, **pure JavaScript** (no `.jsx`), and handcrafted **CSS**. Hosted for free via GitHub Pages.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+🚀 Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- ⚛️ **Single Page Application (SPA)** using React Router
+- 🎨 **Custom CSS styling** – no UI libraries or frameworks
+- 📱 **Responsive Design** – mobile-first and touch-friendly
+- 🧭 **Smooth Routing** without full-page reloads
+- 🌐 **Deployed via GitHub Pages**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+📸 Preview
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Screenshot](./public/preview.png) <!-- Optional: replace or remove this if not needed -->
 
-### `npm run build`
+[🔗 Visit Live Site](https://fremdton90.github.io/React-Page/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#################################################################################################
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+📁 Project Structure
 
-### `npm run eject`
+React-Page/
+├── public/ # Static files (index.html, favicon, etc.)
+├── src/
+│ ├── components/ # Reusable UI components
+│ ├── pages/ # Route pages (Home, Projects, Contact, etc.)
+│ ├── assets/ # Images, icons, audio, etc.
+│ ├── styles/ # Custom CSS files
+│ ├── App.js # Main App component with Router
+│ └── index.js # Entry point
+├── package.json # Project config and dependencies
+└── README.md # You're here 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#################################################################################################
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+🛠️ Getting Started
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+To run the project locally:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+# 1. Clone the repository
+git clone https://github.com/FremdTon90/React-Page.git
+cd React-Page
 
-## Learn More
+# 2. Install dependencies
+npm install
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# 3. Start the development server
+npm start
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# 4. build the final site
+npm run build
 
-### Code Splitting
+#################################################################################################
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+🤝 Contributing
 
-### Analyzing the Bundle Size
+Feel free to:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    Fork the repo
 
-### Making a Progressive Web App
+    Create pull requests
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+    Open issues
 
-### Advanced Configuration
+    Share feedback
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+📄 License
 
-### Deployment
+This project is licensed under the MIT License.
+Feel free to use, modify and share.
+💡 Author
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+FremdTon – github.com/FremdTon90
