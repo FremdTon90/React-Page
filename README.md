@@ -18,8 +18,6 @@ A stylish single-page portfolio website built with **React**, **React Router**, 
 
 📸 Preview
 
-![Screenshot](./public/preview.png) <!-- Optional: replace or remove this if not needed -->
-
 [🔗 Visit Live Site](https://fremdton90.github.io/React-Page/)
 
 ---
