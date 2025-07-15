@@ -39,7 +39,7 @@ React-Page/
 │   ├── App.js          # Router logic & layout
 │   └── index.js        # Entry point
 ├── package.json        # Dependencies & scripts
-└── README.md           # You’re here ```
+└── README.md           # You’re here
 
 #################################################################################################
 
