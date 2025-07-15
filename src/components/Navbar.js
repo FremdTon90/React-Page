@@ -81,13 +81,13 @@ const Burger = styled.div`
       }
 
       span:nth-child(1) {
-        transform: rotate(30deg) translate(3px, 3px);
+        transform: rotate(30deg) translate(3.5px, 3.5px);
       }
       span:nth-child(2) {
         transform: translateX(-11px) translateY(2px) rotate(90deg);
       }
       span:nth-child(3) {
-        transform: rotate(-30deg) translate(1px, 0);
+        transform: rotate(-30deg) translate(1.5px, 0);
       }
     `}
 `;
