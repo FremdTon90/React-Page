@@ -87,11 +87,13 @@ export default function Music() {
         </p>
 
         <p>
-          Neben dem Produzieren bin ich auch <strong>DJ</strong> und hatte das Glück, auf großen Festivals mit <strong>1.000 bis 2.000 Leuten</strong> aufzulegen. Nichts geht über den Vibe, wenn alle zusammen auf dem Klangteppich tanzen.
+          Neben dem Produzieren bin ich auch <strong>DJ</strong> und hatte das Glück, auf großen Festivals mit <strong>1.000 bis 2.000 Leuten</strong> aufzulegen. 
+          Nichts geht über den Vibe, wenn alle zusammen auf dem Klangteppich tanzen.
         </p>
 
         <p>
-          Aber ich mach nicht nur Musik – ich bau auch meine eigenen <strong>VST-Plugins</strong>, designe abgefahrene <strong>Soundwelten</strong> und tüftle an Tools. Digital? Klar. Aber auch analog geht bei mir viel: Synthesizer-Modding und ähnliches.
+          Aber ich mach nicht nur Musik – ich bau auch meine eigenen <strong>VST-Plugins</strong>, designe abgefahrene <strong>Soundwelten</strong> und tüftle an Tools. 
+          Digital? Klar. Aber auch analog geht bei mir viel: Synthesizer-Modding und ähnliches.
         </p>
 
         <p>
@@ -99,7 +101,9 @@ export default function Music() {
         </p>
 
         <p>
-          Zusätzlich bring ich Klang auch ins Bild: Ich erstelle <strong>Audiovisualisierungen</strong> mit <strong>Cinema 4D</strong> – perfekt synchronisierte Welten aus Ton und 3D-Animation. So wird Musik nicht nur hörbar, sondern auch sichtbar.
+          Zusätzlich bring ich Klang auch ins Bild:<br></br>
+          Ich erstelle <strong>Audiovisualisierungen</strong> mit <strong>Cinema 4D</strong> – perfekt synchronisierte Welten aus Ton und 3D-Animation. 
+          So wird Musik nicht nur hörbar, sondern auch sichtbar.
         </p>
 
         <p>

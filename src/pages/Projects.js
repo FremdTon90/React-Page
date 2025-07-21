@@ -274,7 +274,7 @@ export default function Projects() {
         <br />
         <h4>4. Erfolge und Auszeichnung</h4>
         <p>
-          Das Projekt wurde im Rahmen einer von Damago durchgeführten Wettbewerbsausstellung präsentiert, bei der unser Team als eines von nur drei Teams den <strong>ersten Platz</strong> gewann.
+          Das Projekt wurde im Rahmen einer von Damago durchgeführten Wettbewerbsausstellung präsentiert, bei der unser Team den <strong>ersten Platz</strong> gewann.
           Diese Auszeichnung unterstreicht den <strong>innovativen Charakter</strong> und die <strong>technische Exzellenz</strong> unseres Rovers, der in der Lage ist, eine Vielzahl von Gefahren und Herausforderungen zu bewältigen.
         </p>
       </div>
