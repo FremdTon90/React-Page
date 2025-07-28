@@ -69,8 +69,7 @@ export default function Home() {
         </p>
 
         <p>
-          Du suchst jemanden, der neugierig ist, strukturiert denkt und sich mit Begeisterung in neue Tools und Herausforderungen reinkniet? 
-          Ich suche ein Praktikum vom <strong>3.11.2025 bis 30.6.2026</strong> – bevorzugt im Raum Hamburg.
+          Hast du <strong>Anregungen, Fragen</strong> oder was auch immer?
           <p><Link to="/contact" style={{ color: '#ffd700', fontWeight: 'bold' }}>Melde dich!</Link></p>
         </p>
       </div>

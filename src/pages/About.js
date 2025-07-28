@@ -31,8 +31,7 @@ export default function Home() {
       >
         <p>
           Moin! Ich bin <strong>Dustin</strong> – passionierter Quereinsteiger auf dem Weg zum <strong>Fachinformatiker für Anwendungsentwicklung</strong>.
-          Aktuell bin ich in der Umschulung bei <strong>Damago</strong> und suche ab dem <strong>3.11.2025</strong> einen Praktikumsplatz (bis zum <strong>30.6.2026</strong>) – 
-          am liebsten im Raum <strong>Hamburg</strong> oder remote mit Tech-Vibes.
+          Aktuell bin ich in der Umschulung bei <strong>Damago</strong>.
         </p>
 
         <p>
