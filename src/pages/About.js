@@ -81,7 +81,7 @@ export default function Home() {
         <h4>IT-Kenntnisse:</h4>
         <ul>
           <li><strong>Azure AZ-900 Zertifikat</strong></li>
-          <li><strong>Python PCAP Zertifikat</strong> ist in Bearbeitung</li>
+          <li><strong>Python PCAP Zertifikat</strong></li>
           <li><strong>Microsoft Office</strong></li>
           <li><strong>Microsoft Teams</strong></li>
           <li><strong>Microsoft Server</strong></li>
@@ -100,7 +100,7 @@ export default function Home() {
         <h4>Kreativtechnische Kenntnisse:</h4>
         <ul>
           <li><strong>Musikproduktion</strong> mit allen gängigen DAWs</li>
-          <li><strong>3D Design</strong> mit Shapr3D, Cinema 4D und Onshape</li>
+          <li><strong>3D Design</strong>oder mechanische Animationen mit Shapr3D, Cinema 4D und Onshape</li>
           <li><strong>Grafikdesign</strong> & Zeichnen mit Procreate, Adobe Illustrator, Photoshop, InDesign und Affinity Designer</li>
           <li><strong>Videobearbeitung</strong> mit DaVinci Resolve, Adobe Premiere etc.</li>
           <li><strong>UI/UX Design</strong> mit Bootstrap, Figma & handgezeichneten Komponenten</li>
